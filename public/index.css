@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #0056b3;
+  padding: 30px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.navbar-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  gap: 20px;
+  padding: 0;
+}
+
+.navbar-list li {
+  margin: 0 15px;
+}
+
+.navbar-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-list a:hover {
+  color: #e0e0e0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 150px;
+  width: 100%;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  gap: 15px;
+}
+
+h1 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.whatsapp-h1 {
+  color: #0ec56a;
+}
+
+.messenger-h1 {
+  color: #0056b3;
+}
+
+input[type="file"] {
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  margin: 0 auto;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+}
+
+.whatsapp-input {
+  border: 2px solid #22d179 !important;
+}
+
+.whatsapp-input:focus {
+  border-color: #22d179 !important;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #0056b3;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.whatsapp-button {
+  background-color: #22d179 !important;
+}
+
+.whatsapp-button:hover {
+  background-color: #0ec56a !important;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#notification {
+  margin-top: 10px;
+  color: #ff0000;
+  font-weight: bold;
+}

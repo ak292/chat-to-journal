@@ -7,12 +7,28 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div>
-      <h1>Upload Your Messages</h1>
-      <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
-        <input type="file" name="messageFile" accept=".txt" required />
-        <button type="submit">Upload</button>
-      </form>
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/journal">View Journal</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div>
+        <h1 class="whatsapp-h1">Upload WhatsApp Messages</h1>
+        <div id="notification"></div>
+        <form id="whatsappForm" enctype="multipart/form-data">
+          <input class="whatsapp-input" type="file" name="messageFile" accept=".txt" required />
+          <button class="whatsapp-button" type="submit">Upload</button>
+        </form>
+      </div>
+      <div>
+        <h1 class="messenger-h1">Upload Messenger Messages</h1>
+        <form id="messengerForm" enctype="multipart/form-data">
+          <input type="file" name="messageFile" accept=".txt" required />
+          <button type="submit">Upload</button>
+        </form>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>
