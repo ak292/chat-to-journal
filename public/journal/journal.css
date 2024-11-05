@@ -12,7 +12,7 @@ body {
 }
 
 .navbar {
-  background-color: #0056b3;
+  background-color: #007bff;
   padding: 30px 40px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -21,7 +21,7 @@ body {
 .navbar-list {
   list-style-type: none;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center navbar items */
   align-items: center;
   margin: 0;
   gap: 20px;
@@ -40,5 +40,55 @@ body {
 }
 
 .navbar-list a:hover {
-  color: #e0e0e0;
+  color: #dad1d1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align content to the top */
+  padding: 20px; /* Add some padding to the container */
+  flex-grow: 1; /* Allow the container to grow */
+}
+
+h1 {
+  text-align: center; /* Center the heading */
+  color: #333; /* Darker color for better contrast */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+#journalContent {
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin: 20px; /* Space around the content */
+}
+
+.item {
+  background-color: #f9f9f9; /* Light background for contrast */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 15px; /* Space inside each item */
+  margin-bottom: 15px; /* Space between items */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 100%; /* Full width for items */
+  max-width: 800px; /* Limit the maximum width */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+}
+
+.item:hover {
+  background-color: #e9ecef; /* Change background color on hover */
+}
+
+.item h2 {
+  font-size: 1.2em; /* Slightly larger title */
+  margin-bottom: 10px; /* Space below the title */
+  color: #333; /* Darker color for better contrast */
+}
+
+.item p {
+  font-size: 1em; /* Standard size for text */
+  line-height: 1.5; /* Increase line height for readability */
+  color: #555; /* Medium gray for text */
 }

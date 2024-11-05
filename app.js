@@ -46,7 +46,6 @@ app.post("/upload", upload.single("messageFile"), async (req, res) => {
 
     try {
       const analysisResult = await analyzeData(data);
-      console.log(analysisResult);
       res
         .status(200)
         .json({ success: true, message: "File uploaded successfully!", results: analysisResult });
@@ -62,7 +61,7 @@ async function analyzeData(data) {
     .map((msg) => `${msg.timestamp} ${msg.sender}: ${msg.content}`)
     .join("\n");
 
-  const prompt = `Here are my messages for today:\n${formattedMessages}\n\nPlease summarize messages reflecting my day (from my perspective) for my journal but seperate each journal entry by the day the message was sent. Use DD/MM/YYY to seperate each entry and return the results in JSON format without the backticks for formatting.`;
+  const prompt = `Here are my messages for today:\n${formattedMessages}\n\nSummarize messages reflecting my day (from my perspective) for my journal but seperate each journal entry by the day the message was sent. Use DD/MM/YYY to seperate each entry and return the results in an array only. No JSON, No object, ONLY AN ARRAY.`;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",

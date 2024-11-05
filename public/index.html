@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Upload</title>
+    <title>Chat to Journal</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -14,7 +14,8 @@
       </ul>
     </nav>
     <div class="container">
-      <div>
+      <div class="container-two">
+        <img src="images/whatsapp.png" alt="Whatsapp-logo" />
         <h1 class="whatsapp-h1">Upload WhatsApp Messages</h1>
         <div id="notification"></div>
         <form id="whatsappForm" enctype="multipart/form-data">
@@ -22,8 +23,10 @@
           <button class="whatsapp-button" type="submit">Upload</button>
         </form>
       </div>
-      <div>
+      <div class="container-three">
+        <img src="images/messenger.png" alt="Messenger-logo" />
         <h1 class="messenger-h1">Upload Messenger Messages</h1>
+        <div id="notification"></div>
         <form id="messengerForm" enctype="multipart/form-data">
           <input type="file" name="messageFile" accept=".txt" required />
           <button type="submit">Upload</button>
