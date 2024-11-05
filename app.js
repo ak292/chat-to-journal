@@ -100,6 +100,68 @@ function parseMessages(input) {
     .filter((msg) => msg !== null);
 }
 
+app.post("/uploadMessenger", upload.single("messengerFile"), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ success: false, message: "No file uploaded." });
+  }
+
+  // Read the uploaded JSON file
+  fs.readFile(req.file.path, "utf8", async (err, data) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: "Error reading the file." });
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      console.log("Parsed JSON:", jsonData);
+
+      // Process the JSON data
+      const analysisResult = await analyzeMessengerData(jsonData);
+
+      // Respond with the analysis result
+      res.status(200).json({
+        success: true,
+        message: "Messenger file uploaded and processed successfully!",
+        results: analysisResult,
+      });
+    } catch (parseError) {
+      console.error("Parsing Error:", parseError);
+      res.status(400).json({ success: false, message: "Invalid JSON file." });
+    }
+  });
+});
+
+async function analyzeMessengerData(jsonData) {
+  const messages = jsonData.messages.map((msg) => ({
+    timestamp: new Date(msg.timestamp_ms).toLocaleString(), // Convert timestamp to a readable format
+    sender: msg.sender_name,
+    content: msg.content,
+  }));
+
+  const formattedMessages = messages
+    .map((msg) => `${msg.timestamp} ${msg.sender}: ${msg.content}`)
+    .join("\n");
+
+  const prompt = `Here are my messages for today:\n${formattedMessages}\n\nSummarize messages reflecting my day (from my perspective) for my journal but separate each journal entry by the day the message was sent. Use DD/MM/YYYY to separate each entry and return the results in an array only. No JSON, No object, ONLY AN ARRAY.`;
+
+  const response = await axios.post(
+    "https://api.openai.com/v1/chat/completions",
+    {
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data.choices[0].message.content;
+}
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}.`);
 });

@@ -44,6 +44,7 @@ body {
 }
 
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,14 +90,6 @@ input[type="file"] {
   max-width: 280px;
 }
 
-/* .whatsapp-input {
-  border: 2px solid #22d179 !important;
-}
-
-.whatsapp-input:focus {
-  border-color: #22d179 !important;
-} */
-
 input[type="file"]:focus {
   outline: none;
   border-color: #0056b3;
@@ -116,20 +109,12 @@ button {
   margin: 0 auto;
 }
 
-/* .whatsapp-button {
-  background-color: #22d179 !important;
-}
-
-.whatsapp-button:hover {
-  background-color: #0ec56a !important;
-} */
-
 button:hover {
   background-color: #0056b3;
 }
 
 #notification {
-  margin-top: 87px;
+  margin-top: 92px;
   color: #ff0000;
   font-weight: bold;
   font-size: 12px;
@@ -137,6 +122,8 @@ button:hover {
 }
 
 img {
+  min-width: 60px;
+  min-height: 60px;
   width: 50px;
   height: 50px;
 }
@@ -153,4 +140,83 @@ img {
 .container-three #notification {
   min-height: 20px;
   margin-bottom: 4px;
+}
+
+.whatsapp-img {
+  width: 60px;
+  height: 60px;
+}
+
+.intro-section {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 90%;
+  max-width: 600px;
+  z-index: 1;
+  margin-top: 80px;
+}
+
+.intro-heading {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-container {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.info-icon {
+  cursor: pointer;
+  color: #007bff;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f0f8ff;
+  border: 2px solid #007bff;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  max-width: 600px;
+  width: 500px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  display: none;
+}
+
+.info-container:hover .tooltip {
+  display: block;
+}
+
+.info-msg {
+  display: flex;
 }
