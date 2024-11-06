@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Error:", error);
         notificationDiv.textContent =
-          "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp (formatting matters)";
+          "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp/Messenger (formatting matters)";
         notificationDiv.style.color = "red";
       });
   }
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } else {
       notification.textContent =
-        "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp (formatting matters)";
+        "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp/Messenger (formatting matters)";
       notification.style.color = "red";
     }
 
