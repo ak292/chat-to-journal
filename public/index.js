@@ -2,25 +2,43 @@ document.addEventListener("DOMContentLoaded", function () {
   const whatsappForm = document.getElementById("whatsappForm");
   const messengerForm = document.getElementById("messengerForm");
   const notificationDiv = document.getElementById("notification");
+  const notificationMessenger = document.getElementById("notification-messenger");
 
   whatsappForm.addEventListener("submit", function (event) {
     event.preventDefault();
     notificationDiv.style.color = "green";
     notificationDiv.textContent = "Loading...";
+
     const formData = new FormData(whatsappForm);
+    const username = document.getElementById("whatsapp-input").value.trim();
+
+    if (username !== "") {
+      formData.set("username", username);
+    } else {
+      console.log("WhatsApp username is empty or invalid");
+    }
+
     uploadFile(formData, "whatsapp");
   });
 
   messengerForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    notificationDiv.style.color = "green";
-    notificationDiv.textContent = "Loading...";
+    notificationMessenger.style.color = "green";
+    notificationMessenger.textContent = "Loading...";
+
     const formData = new FormData(messengerForm);
+    const username = document.getElementById("messenger-input").value.trim();
+
+    if (username !== "") {
+      formData.set("username", username);
+    } else {
+      console.log("Messenger username is empty or invalid");
+    }
+
     uploadMessengerFile(formData);
   });
 
   function uploadFile(formData, type) {
-    console.log(formData);
     fetch("/upload", {
       method: "POST",
       body: formData,
@@ -31,13 +49,13 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error:", error);
-        notificationDiv.textContent = "Upload failed!";
+        notificationDiv.textContent =
+          "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp (formatting matters)";
         notificationDiv.style.color = "red";
       });
   }
 
   function uploadMessengerFile(formData) {
-    console.log(formData);
     fetch("/uploadMessenger", {
       method: "POST",
       body: formData,
@@ -48,32 +66,39 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => {
         console.error("Error:", error);
-        notificationDiv.textContent = "Upload failed!";
-        notificationDiv.style.color = "red";
+        notificationMessenger.textContent = "Upload failed!";
+        notificationMessenger.style.color = "red";
       });
   }
 
   function handleResponse(data, type) {
-    if (data.success) {
-      console.log(typeof data.results);
-      console.log(data.results);
+    const notification = type === "whatsapp" ? notificationDiv : notificationMessenger;
 
+    if (data.success) {
       let newData = JSON.parse(data.results);
       let existingEntries = JSON.parse(localStorage.getItem("journalEntry")) || [];
 
       existingEntries = existingEntries.concat(newData);
       localStorage.setItem("journalEntry", JSON.stringify(existingEntries));
 
-      console.log("Updated Entries:", existingEntries);
-      notificationDiv.textContent =
+      notification.textContent =
         "Upload successful! Please wait a second or two to see reflected changes in journal entries";
-      notificationDiv.style.color = "green";
+      notification.style.color = "green";
+
+      if (type === "whatsapp") {
+        document.getElementById("whatsapp-input").value = "";
+        document.getElementById("whatsappForm").reset();
+      } else if (type === "messenger") {
+        document.getElementById("messenger-input").value = "";
+        document.getElementById("messengerForm").reset();
+      }
     } else {
-      notificationDiv.textContent = "Upload failed!";
-      notificationDiv.style.color = "red";
+      notification.textContent = "Upload failed!";
+      notification.style.color = "red";
     }
+
     setTimeout(() => {
-      notificationDiv.textContent = "";
+      notification.textContent = "";
     }, 5000);
   }
 });

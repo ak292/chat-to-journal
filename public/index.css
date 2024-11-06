@@ -11,6 +11,10 @@ body {
   height: 100vh;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .navbar {
   background-color: #007bff;
   padding: 30px 40px;
@@ -121,6 +125,14 @@ button:hover {
   position: absolute;
 }
 
+#notification-messenger {
+  margin-top: 92px;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 12px;
+  position: absolute;
+}
+
 img {
   min-width: 60px;
   min-height: 60px;
@@ -219,4 +231,31 @@ img {
 
 .info-msg {
   display: flex;
+}
+
+#whatsapp-input {
+  height: 40px;
+  width: 280px;
+}
+
+#messenger-input {
+  height: 40px;
+  width: 280px;
+}
+
+.input-btn-container {
+  display: flex;
+  gap: 5px;
+}
+
+.input-btn-container input {
+  padding: 4px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-btn-container input:focus {
+  border-color: #0056b3;
 }

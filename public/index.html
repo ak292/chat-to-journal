@@ -16,7 +16,7 @@
     <div class="intro-section">
       <h2 class="intro-heading">Welcome to Your "Chat to Journal" App!</h2>
       <p class="intro-text">
-        This app allows you to upload your WhatsApp and Messenger messages in text/JSON format and
+        This web app allows you to upload your WhatsApp and Messenger messages in text format and
         convert them into timestamped journal entries using the power of LLMs! Simply select your
         message file, and we’ll help you document your thoughts and conversations!
       </p>
@@ -37,11 +37,19 @@
                 target="_blank"
                 >how to export a WhatsApp chat.</a
               >
+              <br />
+              <br />
+              <b>Note: </b>You can optionally input your WhatsApp username as well to potentially
+              get more accurate results from the LLM.
             </div>
           </div>
         </div>
         <div id="notification"></div>
+
         <form id="whatsappForm" enctype="multipart/form-data">
+          <div class="input-btn-container">
+            <input id="whatsapp-input" placeholder="Input WhatsApp username" />
+          </div>
           <input class="whatsapp-input" type="file" name="messageFile" accept=".txt" required />
           <button class="whatsapp-button" type="submit">Upload</button>
         </form>
@@ -53,20 +61,32 @@
           <div class="info-container">
             <span class="info-icon">i</span>
             <div class="tooltip">
-              Upload a .txt file of any of your Messenger chats! You can download all your Facebook
-              Messenger chats data and you can choose between JSON or HTML. Pick JSON and it will
-              automatically download your chats in JSON format. You can then simply change the .JSON
-              file extension to .txt and upload the file here (Sorry, JSON not supported atm) Here
+              Upload a txt file of any of your Messenger chats! You can download all your Facebook
+              Messenger chats and you can choose between JSON or HTML. Pick JSON and it will
+              automatically download your chats in JSON format. You can then change the file
+              extension from JSON to .txt and upload it here (JSON not supported currently). Here
               are instructions on
               <a href="https://www.facebook.com/help/messenger-app/212802592074644" target="_blank"
                 >how to download your Facebook Messenger data.</a
               >
+              <br />
+              <br />
+              <b>Note: </b>You can optionally input your Messenger username as well to potentially
+              get more accurate results from the LLM.
             </div>
           </div>
         </div>
-        <div id="notification"></div>
+        <div id="notification-messenger"></div>
         <form id="messengerForm" enctype="multipart/form-data">
-          <input type="file" name="messengerFile" accept=".JSON" required />
+          <div class="input-btn-container">
+            <input
+              id="messenger-input"
+              placeholder="Input Messenger username"
+              type="text"
+              name="username"
+            />
+          </div>
+          <input type="file" name="messengerFile" accept=".txt" required />
           <button type="submit">Upload</button>
         </form>
       </div>
