@@ -93,7 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("messengerForm").reset();
       }
     } else {
-      notification.textContent = "Upload failed!";
+      notification.textContent =
+        "Upload failed! Please make sure it is a valid .txt file exported directly from WhatsApp (formatting matters)";
       notification.style.color = "red";
     }
 
