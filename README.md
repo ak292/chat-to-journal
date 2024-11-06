@@ -8,9 +8,9 @@ This project was deployed at https://chat-to-journal.onrender.com (Backend uses 
 
 # How to Run
 
-**Note**: If you want to run it locally, you will need an OpenAPI key to be able to make requests to certain LLMs, which requires you to pay. It might be easier to just test it out through the deployed version.
+**Note**: If you want to run it locally, you will need an OpenAPI key to be able to make requests to certain LLMs, which requires you to buy credits as there is no free API option. It may be easier to just test it out through the deployed version.
 
-1) Create a .env file and add an "API_KEY" variable with your OpenAPI key
-2) npm install
-3) node app.js
+1) Create a .env file in the root directory and add an "API_KEY" variable with your OpenAPI key
+2) Run ```npm install```
+3) Run ```node app.js```
 
