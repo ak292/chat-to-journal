@@ -7,7 +7,6 @@ const path = require("path");
 const axios = require("axios");
 
 const app = express();
-const PORT = 3000;
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === "text/plain") {
@@ -194,6 +193,8 @@ async function analyzeMessengerData(jsonData, username) {
   return response.data.choices[0].message.content;
 }
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}.`);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
